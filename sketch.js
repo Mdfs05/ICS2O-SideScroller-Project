@@ -10,7 +10,7 @@ function setup() {
   createCanvas(400, 400);
   person = new Person();
   for (var i = 0; i < 50; i++) {
-    coin[i] = new Coin(400 + i * 100, height - 50 + i * -4);
+    coin[i] = new Coin(400 + i * 100, height - 50 + i * -5);
   }
 }
 
@@ -35,23 +35,20 @@ function draw() {
   person.update();
   person.edges();
   person.display();
+
+
   
-  
-  if(person.score >= 45) {
-  stroke(30, 200, 30);
-  textSize(80);
-  text("You Win", person.pos.x, 100);
-  }
 
 
   var gravity = createVector(0, 0.1);
   person.applyForce(gravity);
 
 
-  if (mouseIsPressed) {
-    var force = createVector(-0.1, 0);
-    person.applyForce(force);
-  }
+  // Wind force
+  // if (mouseIsPressed) {
+  //   var force = createVector(-0.1, 0);
+  //   person.applyForce(force);
+  // }
 
   for (var i = 0; i < 50; i++) {
     //new coin
@@ -65,16 +62,23 @@ function draw() {
 
 
   //clouds
-  for (let i = 0; i < 30; i++) {
+  
+  var cloudXs = [];
+  for (var j = 0; j < 25; j++) {
+    cloudXs.push(j * 20);
+  }
+  
+  for (let i = 0; i < cloudXs.length; i++) {
     fill(255, 255, 255);
-    ellipse(10 + i * random(400), 10 + i * random(1), 10, 10);
+    ellipse(1 + cloudXs[i] * 6, (10 + cloudXs[i] * 2) % 400, 100, 100);
   }
   // var wind = createVector(0.1, 0);
 
   // for(var i = 0; i <particles.length; i++) {
   // var gravity = createVector(0, 0.2 * particles[i].mass);
 
-  //Wind is applied only when mouse is pressed
+  // Wind is applied only when mouse is pressed
+  // Maybe
   // if (mousePressed) {
   // particles[i].applyForce(wind);
 }
