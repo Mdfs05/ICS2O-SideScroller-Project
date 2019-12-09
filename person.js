@@ -1,5 +1,3 @@
-
-
 function Person(x, y) {
   this.pos = createVector(50, height);
   this.vel = createVector(1.5, 0);
@@ -23,6 +21,26 @@ function Person(x, y) {
     fill(255);
     stroke(255);
     rect(this.pos.x, this.pos.y - 50, 30, 50, 30);
+    
+    // textSize(25);
+    // text("Your Score:" + person.score, person.pos.x + -45, 75);
+    
+    //ground
+    fill(150, 150, 2);
+    rect(person.pos.x - 50, height * 0.95, width, height * 0.040);
+    
+    if (this.score <= 40) {
+    stroke(30, 200, 30);
+    textSize(25);
+    fill(255, 255, 255);
+    text("Your Score: " + person.score, person.pos.x + -45, 75);
+    //text("You Win", person.pos.x, 100);
+          
+  } else {
+    fill(255, 255, 255);
+    textSize(80);
+    text("You Win!", person.pos.x - 15, 90);
+  }
   }
 
   this.edges = function() {
@@ -40,7 +58,7 @@ function Person(x, y) {
 
   this.hits = function(coin) {
     //if person is over coin, do something
-    if (this.pos.x >= coin.pos.x && this.pos.x <= coin.pos.x + 40 && this.pos.y >= coin.pos.y && this.pos.y <= coin.pos.y + 100) // 100? See if 40
+    if (this.pos.x >= coin.pos.x && this.pos.x <= coin.pos.x + 40 && this.pos.y >= coin.pos.y && this.pos.y <= coin.pos.y + 40) // 100 or 40
     {
       coin.pos.y = -400;
       this.score++;
