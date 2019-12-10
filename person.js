@@ -29,17 +29,21 @@ function Person(x, y) {
     fill(150, 150, 2);
     rect(person.pos.x - 50, height * 0.95, width, height * 0.040);
     
-    if (this.score <= 40) {
+    if (this.score <= 39) {
     stroke(30, 200, 30);
     textSize(25);
     fill(255, 255, 255);
-    text("Your Score: " + person.score, person.pos.x + -45, 75);
-    //text("You Win", person.pos.x, 100);
+    text("Your Score: " + person.score + "/50", person.pos.x + -45, 75);
+    text("(Must score 80% to pass)", person.pos. x + -45, 125);
+    text(person.score * 2 + "%", person.pos.x + -45, 175);
+    //text("You Win", person.pos.x, 100 );
           
   } else {
     fill(255, 255, 255);
     textSize(80);
     text("You Win!", person.pos.x - 15, 90);
+    textSize(25);
+    text("Your Score: " + person.score + "/50", person.pos.x, 125);
   }
   }
 
